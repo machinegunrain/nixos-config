@@ -7,7 +7,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
-    
+  outputs = { self, nixpkgs, ... }@attrs: {
+    nixosConfigurations.workspace = nixpkgs.lib.nixosSystem {
+      system = "x86-64-linux";
+      specialArgs = attrs;
+      modules = [ ./configuration.nix ];
+    };
   };
 }
