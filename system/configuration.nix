@@ -45,7 +45,7 @@
   users.users.dash = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "sound"];
-    shell = fish;
+    shell = pkgs.fish;
  };
 
   fonts.fonts = with pkgs; [
