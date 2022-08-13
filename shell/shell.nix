@@ -4,6 +4,7 @@ mkShell {
   buildInputs = [
     nixpkgs-fmt
     ripgrep
+    fish
   ];
 
   shellHook = ''
