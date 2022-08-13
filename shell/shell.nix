@@ -8,6 +8,6 @@ mkShell {
   ];
 
   shellHook = ''
-    # ...
+    fish
   '';
 }
