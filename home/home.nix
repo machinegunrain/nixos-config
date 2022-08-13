@@ -7,12 +7,10 @@
            stateVersion  = "22.05";
            keyboard = null;};
 
-  home.packages = with pkgs; [ htop unzip i2c-tools
-                               wayland swaylock swayidle waybar
-                               mpv spotify
-                               wofi mako
-                               wl-clipboard
-                               texlive.combined.scheme-full ] ++ swayEnv;
+  home.packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard wofi mako
+                               nix-prefetch-github
+                               texlive.combined.scheme-full
+                               mpv spotify ] ++ swayEnv;
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -21,11 +19,7 @@
   wayland.windowManager.sway = import ./configs/sway.nix { inherit config pkgs; };
   programs.foot = import ./configs/foot.nix { inherit pkgs; };
 
-  programs.fish.enable = true;
-  programs.fish.interactiveShellInit = "direnv hook fish | source";
-  programs.fish.functions = {
-    foo = "bar";
-  };
+  programs.fish = import ./configs/fish.nix { inherit pkgs; };
 
   programs.vscode.enable = true;
   programs.vscode.package = pkgs.vscodium;
