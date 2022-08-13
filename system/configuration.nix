@@ -1,10 +1,10 @@
 { config, lib, pkgs, nixpkgs, ... }: {
-  
+
   imports = [ ./hardware-configuration.nix ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
   nixpkgs.config.allowUnfree = true;
-  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -45,6 +45,7 @@
   users.users.dash = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "sound"];
+    shell = fish;
  };
 
   fonts.fonts = with pkgs; [
@@ -58,6 +59,7 @@
   programs.gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
+
   };
 
   # List services that you want to enable:
@@ -72,7 +74,7 @@
 };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals=with pkgs; [ 
+  xdg.portal.extraPortals=with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
   ];
