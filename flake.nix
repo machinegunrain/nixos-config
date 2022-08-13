@@ -9,7 +9,7 @@
 
   outputs = { self, nixpkgs, ... }@attrs: {
     nixosConfigurations.workspace = nixpkgs.lib.nixosSystem {
-      system = "x86-64-linux";
+      system = "x86_64-linux";
       specialArgs = attrs;
       modules = [ ./configuration.nix ];
     };
