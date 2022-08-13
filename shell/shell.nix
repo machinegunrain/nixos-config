@@ -2,13 +2,12 @@
 with pkgs;
 mkShell {
   buildInputs = [
-    gnumake glib
-    nixpkgs-fmt
+    gnumake glib nixpkgs-fmt
     ripgrep
     fish
   ];
 
   shellHook = ''
-    fish
+    export NIX_BUILD_SHELL=fish
   '';
 }
