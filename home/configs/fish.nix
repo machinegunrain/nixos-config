@@ -11,6 +11,6 @@
     src = pkgs.fetchFromGitHub {
       owner = "jorgebucaran";
       repo = "hydro";
-      rev = "cQYT1EKlSev+FZe/zgeb3kzaqYOvZTJxFXbmwOk0UKo=";
-      sha256 = "";};}];
+      rev = "d4c107a2c99d1066950a09f605bffea61fc0efab";
+      sha256 = "cQYT1EKlSev+FZe/zgeb3kzaqYOvZTJxFXbmwOk0UKo=";};}];
 }
