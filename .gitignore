@@ -1,5 +1,3 @@
-*/flake.lock
-home/flake.lock
-*/*/flake.lock
+*.lock
 shell/.direnv
-flake.lock
+
