@@ -1,10 +1,6 @@
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+{ config, lib, pkgs, nixpkgs, ... }: {
+  
+  imports = [ ./hardware-configuration.nix ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 
@@ -19,7 +15,7 @@
     allowDiscards = true;
   };
 
-  networking.hostName = "workspace";
+  networking.hostName = "nixos";
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -108,7 +104,7 @@
       fn = oa: {
         nativeBuildInputs = oa.nativeBuildInputs ++ [ pkgs.glslang ];
         mesonFlags = oa.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
-#       patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ]; See below 
+        # patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ];
         postInstall = oa.postInstall + ''
             mv $out/lib/libVkLayer* $drivers/lib
 
