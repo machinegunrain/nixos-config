@@ -1,6 +1,9 @@
 { pkgs ? import <nixpkgs> { } }:
 with pkgs;
 mkShell {
+  nativeBuildInputs = [
+    bashInteractive
+  ];
   buildInputs = [
     gnumake glib nixpkgs-fmt
     ripgrep
@@ -8,6 +11,5 @@ mkShell {
   ];
 
   shellHook = ''
-    export NIX_BUILD_SHELL=fish
   '';
 }

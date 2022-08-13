@@ -33,7 +33,7 @@
   console.keyMap = "dvorak-programmer";
 
   environment.systemPackages = with pkgs; [
-    vim wget parted git ntfs3g mesa
+    vim wget parted git ntfs3g mesa cachix
     pavucontrol
     firefox
   ];
