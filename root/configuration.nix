@@ -1,79 +1,31 @@
 { config, lib, pkgs, nixpkgs, ... }: {
   imports = [
     ./hardware/hardware-configuration.nix
+    ./hardware.nix
     ./boot.nix
+    ./networking.nix
+    ./system.nix
+    ./services.nix
+    ./users.nix
   ];
 
+  # Nix Configuration
   nix.extraOptions = "experimental-features = nix-command flakes";
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "workspace";
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.useDHCP = false;
-  networking.interfaces.eno0.useDHCP = true;
-  networking.interfaces.wls6.useDHCP = true;
 
-  # Set your time zone.
-  time.timeZone = "Asia/Bangkok";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.font = "Lat2-Terminus16";
-  console.keyMap = "dvorak-programmer";
-
+  # root packages
   environment.systemPackages = with pkgs; [
-    vim wget parted git ntfs3g mesa cachix
+    wget parted git ntfs3g mesa cachix
     pavucontrol
-    firefox
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dash = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "sound"];
-    shell = pkgs.fish;
- };
 
   fonts.fonts = with pkgs; [
    noto-fonts-cjk
    noto-fonts-emoji
    (nerdfonts.override { fonts = ["Iosevka"];})
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-
-  };
-
-  # List services that you want to enable:
-  security.pam.services.swaylock.text = "auth include login";
-  security.rtkit.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-};
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals=with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-  ];
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 57621];
-  networking.firewall.allowedUDPPorts = [ 67 68 161 162 ];
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -82,43 +34,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.bluezFull;
-    powerOnBoot = true;
-    settings =  { General = { ControllerMode = "bredr"; };};
-  };
-
-  services.dbus.enable = true;
-  hardware = {
-  opengl =
-    let
-      fn = oa: {
-        nativeBuildInputs = oa.nativeBuildInputs ++ [ pkgs.glslang ];
-        mesonFlags = oa.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
-        # patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ];
-        postInstall = oa.postInstall + ''
-            mv $out/lib/libVkLayer* $drivers/lib
-
-            #Device Select layer
-            layer=VkLayer_MESA_device_select
-            substituteInPlace $drivers/share/vulkan/implicit_layer.d/''${layer}.json \
-              --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
-
-            #Overlay layer
-            layer=VkLayer_MESA_overlay
-            substituteInPlace $drivers/share/vulkan/explicit_layer.d/''${layer}.json \
-              --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
-          '';
-      };
-    in
-    with pkgs; {
-      enable = true;
-      driSupport32Bit = true;
-      package = (mesa.overrideAttrs fn).drivers;
-      package32 = (pkgsi686Linux.mesa.overrideAttrs fn).drivers;
-    };
-
-};
 }

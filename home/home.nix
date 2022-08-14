@@ -29,8 +29,8 @@ in  {
 
   services.emacs.enable = true;
   services.emacs.defaultEditor = true;
-
   programs.doom-emacs.enable = true;
   programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
 
+  programs.firefox.enable = true;
 }
