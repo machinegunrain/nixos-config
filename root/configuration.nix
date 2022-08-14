@@ -1,5 +1,5 @@
-{ config, lib, pkgs, nixpkgs, ... }: {
-  imports = [
+{ config, lib, pkgs, nixpkgs, ... }:
+{ imports = [
     ./hardware/hardware-configuration.nix
     ./hardware.nix
     ./boot.nix
@@ -16,8 +16,8 @@
 
   # root packages
   environment.systemPackages = with pkgs; [
-    wget parted git ntfs3g mesa cachix
-    pavucontrol
+    wget parted git ntfs3g
+    mesa cachix pavucontrol
   ];
 
 

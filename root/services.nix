@@ -5,6 +5,7 @@
 
   # Enable dbus
   services.dbus.enable = true;
+  services.udisks2.enable = true;
 
   # Login through swaylock
   security.pam.services.swaylock.text = "auth include login";
@@ -14,9 +15,9 @@
   services.openssh.enable = true;
 
   # Sound
-  services.pipewire = {
-    enable = true;
+  services.pipewire =
+  { enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse.enable = true;};
+    pulse.enable = true; };
 }

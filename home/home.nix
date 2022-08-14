@@ -20,7 +20,7 @@ in  {
            };
            keyboard = null;
            packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard wofi mako fd
-                                   nix-prefetch-github neofetch
+                                   nix-prefetch-github neofetch fortune
                                    texlive.combined.scheme-full
                                    mpv spotify ] ++ extra;
            };
