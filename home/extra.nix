@@ -10,6 +10,7 @@ let
      systemctl --uses start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
      '';
   };
+
   configure-gtk = pkgs.writeTextFile {
   name = "configure-gtk";
   destination = "/bin/configue-gtk";
@@ -23,4 +24,5 @@ let
       gsettings set $gnome_schema gtk-theme 'Catppuccin
   '';
   };
+
 in [ dbus-sway-environment configure-gtk ]

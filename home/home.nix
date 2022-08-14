@@ -1,28 +1,27 @@
-{ config, pkgs, doom-emacs,
- ... }:
+{ config, lib, pkgs, ... }:
 let
-  swayEnv = import ./configs/wayland.nix { inherit config pkgs; };
+  extra = import ./extra.nix { inherit config pkgs; };
 in  {
+  imports = [
+    ./foot
+    ./sway
+    ./fish
+  ];
+
+  programs.home-manager.enable = true;
   home = { username = "dash";
            homeDirectory = "/home/dash";
            stateVersion  = "22.05";
            sessionVariables = {
-              MOZ_ENABLE_WAYLAND = 1;
-              XDG_CURRENT_DESKTOP = "sway";
+              moz_enable_wayland = 1;
+              xdg_current_desktop = "sway";
            };
            keyboard = null;
            packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard wofi mako fd
                                    nix-prefetch-github neofetch
                                    texlive.combined.scheme-full
-                                   mpv spotify ] ++ swayEnv;
+                                   mpv spotify ] ++ extra;
            };
-
-  programs.home-manager.enable = true;
-  wayland.windowManager.sway = import ./configs/sway.nix { inherit config pkgs; };
-
-  programs.foot = import ./configs/foot.nix { inherit pkgs; };
-
-  programs.fish = import ./configs/fish.nix { inherit pkgs; };
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -32,5 +31,6 @@ in  {
   programs.doom-emacs.enable = true;
   programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
 
-  programs.firefox.enable = true;
+  programs.firefox = import ./configs/firefox.nix { inherit config lib pkgs; } ;
+
 }

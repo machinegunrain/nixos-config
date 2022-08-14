@@ -1,40 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.bluezFull;
-    powerOnBoot = true;
-    settings =  { General = { ControllerMode = "bredr"; };};
-  };
+ # Pick only one of the below networking options.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  hardware = {
-  opengl =
-    let
-      fn = oa: {
-        nativeBuildInputs = oa.nativeBuildInputs ++ [ pkgs.glslang ];
-        mesonFlags = oa.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
-        # patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ];
-        postInstall = oa.postInstall + ''
-            mv $out/lib/libVkLayer* $drivers/lib
+  networking.hostName = "workspace";
+  networking.useDHCP = false;
+  networking.interfaces.eno0.useDHCP = true;
+  networking.interfaces.wls6.useDHCP = true;
 
-            #Device Select layer
-            layer=VkLayer_MESA_device_select
-            substituteInPlace $drivers/share/vulkan/implicit_layer.d/''${layer}.json \
-              --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 57621];
+  networking.firewall.allowedUDPPorts = [ 67 68 161 162 ];
+  # networking.firewall.enable = false;
 
-            #Overlay layer
-            layer=VkLayer_MESA_overlay
-            substituteInPlace $drivers/share/vulkan/explicit_layer.d/''${layer}.json \
-              --replace "lib''${layer}" "$drivers/lib/lib''${layer}"
-          '';
-      };
-    in
-    with pkgs; {
-      enable = true;
-      driSupport32Bit = true;
-      package = (mesa.overrideAttrs fn).drivers;
-      package32 = (pkgsi686Linux.mesa.overrideAttrs fn).drivers;
-    };
-  };
 }

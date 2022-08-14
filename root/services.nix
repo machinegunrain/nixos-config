@@ -2,6 +2,8 @@
 
 {
   # List services that you want to enable:
+
+  # Enable dbus
   services.dbus.enable = true;
 
   # Login through swaylock
