@@ -22,7 +22,6 @@ in  {
   programs.direnv.nix-direnv.enable = true;
 
   programs.emacs.enable = true;
-  # programs.emacs.package = doom-emacs;
   programs.doom-emacs.enable = true;
   programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
 
@@ -31,4 +30,11 @@ in  {
 
   programs.java.enable = true;
   programs.java.package = pkgs.jdk11;
+
+  # Home Manager setup
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = 1;
+    XDG_CURRENT_DESKTOP = "sway";
+  };
+
 }

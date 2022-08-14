@@ -1,5 +1,8 @@
 { pkgs, ...}: {
  enable = true;
+ functions = {
+   home-flake = "home-manager switch --flake .#dash";
+ };
  plugins = [
   { name = "z";
     src = pkgs.fetchFromGitHub {

@@ -1,5 +1,4 @@
 { config, lib, pkgs, nixpkgs, ... }: {
-
   imports = [ ./hardware-configuration.nix ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
@@ -38,9 +37,6 @@
     firefox
   ];
 
-  security.pam.services.swaylock.text = "auth include login";
-  security.rtkit.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dash = {
     isNormalUser = true;
@@ -50,6 +46,7 @@
 
   fonts.fonts = with pkgs; [
    noto-fonts-cjk
+   noto-fonts-emoji
    (nerdfonts.override { fonts = ["Iosevka"];})
   ];
 
@@ -63,6 +60,10 @@
   };
 
   # List services that you want to enable:
+  security.pam.services.swaylock.text = "auth include login";
+  security.rtkit.enable = true;
+
+  # Add Manoonchai Keyboard layout
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

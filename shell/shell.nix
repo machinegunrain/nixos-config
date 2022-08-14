@@ -6,8 +6,8 @@ mkShell {
   ];
   buildInputs = [
     gnumake glib nixpkgs-fmt
-    ripgrep
-    fish
+    ripgrep fish
+    xorg.xkbcomp xorg.setxkbmap
   ];
 
   shellHook = ''
