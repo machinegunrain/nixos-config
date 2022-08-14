@@ -9,3 +9,4 @@ TODO
 - [ ] set manoonchai layout through kmonad
 - [ ] config waybar to look better
 - [ ] add supports for programming languages
+- [ ] manage secret via agenix
