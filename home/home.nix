@@ -3,9 +3,11 @@ let
   extra = import ./extra.nix { inherit config pkgs; };
 in  {
   imports = [
+    ./emacs
+    ./firefox
+    ./fish
     ./foot
     ./sway
-    ./fish
   ];
 
   programs.home-manager.enable = true;
@@ -26,11 +28,6 @@ in  {
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  services.emacs.enable = true;
-  services.emacs.defaultEditor = true;
-  programs.doom-emacs.enable = true;
-  programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
 
-  programs.firefox = import ./configs/firefox.nix { inherit config lib pkgs; } ;
 
 }
