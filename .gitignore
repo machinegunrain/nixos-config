@@ -1,6 +1,5 @@
 home/*.lock
 root/*.lock
 shell/*.lock
-*.lock
 shell/.direnv
-
+*.lock
