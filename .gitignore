@@ -1,4 +1,6 @@
-*/*.lock
+home/*.lock
+system/*.lock
+shell/*.lock
 *.lock
 shell/.direnv
 
