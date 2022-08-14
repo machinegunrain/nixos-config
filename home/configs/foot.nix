@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   enable = true;
-    settings = {
+  server.enable = true;
+  settings = {
     main = { term = "xterm-256color";
              font = "PragmataPro Mono Liga:size=12";
              dpi-aware = "yes";};

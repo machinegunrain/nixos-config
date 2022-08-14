@@ -6,9 +6,13 @@ in  {
   home = { username = "dash";
            homeDirectory = "/home/dash";
            stateVersion  = "22.05";
+           sessionVariables = {
+              MOZ_ENABLE_WAYLAND = 1;
+              XDG_CURRENT_DESKTOP = "sway";
+           };
            keyboard = null;
            packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard wofi mako fd
-                                   nix-prefetch-github
+                                   nix-prefetch-github neofetch
                                    texlive.combined.scheme-full
                                    mpv spotify ] ++ swayEnv;
            };
@@ -17,7 +21,9 @@ in  {
   wayland.windowManager.sway = import ./configs/sway.nix { inherit config pkgs; };
 
   programs.foot = import ./configs/foot.nix { inherit pkgs; };
+
   programs.fish = import ./configs/fish.nix { inherit pkgs; };
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
@@ -26,17 +32,5 @@ in  {
 
   programs.doom-emacs.enable = true;
   programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
-
-  programs.vscode.enable = true;
-  programs.vscode.package = pkgs.vscodium;
-
-  programs.java.enable = true;
-  programs.java.package = pkgs.jdk11;
-
-  # Home Manager setup
-  home.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = 1;
-    XDG_CURRENT_DESKTOP = "sway";
-  };
 
 }

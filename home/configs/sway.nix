@@ -5,8 +5,8 @@ in {
   enable = true;
   wrapperFeatures.gtk = true;
   config = {
-    terminal = "foot";
-    menu = "wofi--show run";
+    terminal = "footclient";
+    menu = "rofi -show run";
     bars = [{
       fonts.size = 12.0;
       command = "waybar";
