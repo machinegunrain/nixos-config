@@ -4,11 +4,12 @@
    vi = "$EDITOR";
  };
  shellInit = ''
-   set NIXCONF $HOME/nixos-config
+   set HOMECONF $HOME/nixos-config/home
+   set ROOTCONF $HOME/nixos-config/root
  '';
  functions = {
-   home-flake = "home-manager switch --flake $NIXCONF/home/#dash";
-   system-flake = "sudo nixos-rebuild switch --flake $NIXCONF/system/#";
+   home-flake = "home-manager switch --flake $HOMECONF/#dash";
+   root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#";
  };
  plugins = [
   { name = "z";
