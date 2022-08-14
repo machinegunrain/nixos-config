@@ -1,7 +1,7 @@
 { config, lib, pkgs, nixpkgs, ... }: {
   imports = [
     ./hardware/hardware-configuration.nix
-    ./nvidia.nix
+    ./hardware.nix
     ./boot.nix
     ./networking.nix
     ./system.nix
