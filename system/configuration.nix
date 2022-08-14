@@ -63,8 +63,6 @@
   security.pam.services.swaylock.text = "auth include login";
   security.rtkit.enable = true;
 
-  # Add Manoonchai Keyboard layout
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.pipewire = {

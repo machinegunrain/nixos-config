@@ -1,0 +1,11 @@
+#+title: My Nixos Configuration
+
+* core features
+- on wayland using sway and waybar
+- fish shell
+- doom-emacs as a services
+
+TODO
+- [ ] set manoonchai layout through kmonad
+- [ ] config waybar to look better
+- [ ] add supports for programming languages

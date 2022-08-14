@@ -21,7 +21,9 @@ in  {
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  programs.emacs.enable = true;
+  services.emacs.enable = true;
+  services.emacs.defaultEditor = true;
+
   programs.doom-emacs.enable = true;
   programs.doom-emacs.doomPrivateDir = ./configs/doom.d;
 

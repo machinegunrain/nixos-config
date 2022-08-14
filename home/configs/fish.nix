@@ -1,7 +1,14 @@
 { pkgs, ...}: {
  enable = true;
+ shellAliases = {
+   vi = "$EDITOR";
+ };
+ shellInit = ''
+   set NIXCONF $HOME/nixos-config
+ '';
  functions = {
-   home-flake = "home-manager switch --flake .#dash";
+   home-flake = "home-manager switch --flake $NIXCONF/home/#dash";
+   system-flake = "sudo nixos-rebuild switch --flake $NIXCONF/system/#";
  };
  plugins = [
   { name = "z";
