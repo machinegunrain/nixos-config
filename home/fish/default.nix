@@ -10,7 +10,7 @@
     functions = {
       fish_greeting = "";
       home-flake = "home-manager switch --flake $HOMECONF/#dash";
-      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/# --impure";};
+      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#";};
     plugins = [
       { name = "z";
         src = pkgs.fetchFromGitHub {

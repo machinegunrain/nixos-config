@@ -4,10 +4,32 @@
     ./hardware.nix
     ./boot.nix
     ./networking.nix
-    ./system.nix
     ./services.nix
     ./users.nix
   ];
+
+  # Set your time zone.
+  time.timeZone = "Asia/Bangkok";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.font = "Lat2-Terminus16";
+  console.keyMap = "dvorak-programmer";
+
+  # Enable wayland and gtk
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals=with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+  };
 
   # Nix Configuration
   nix.extraOptions = "experimental-features = nix-command flakes";
@@ -18,6 +40,8 @@
   environment.systemPackages = with pkgs; [
     wget parted git ntfs3g xorg.setxkbmap
     mesa cachix pavucontrol
+    pkgs.nerdfonts
+
   ];
 
 
@@ -26,6 +50,7 @@
    noto-fonts-emoji
    (nerdfonts.override { fonts = ["Iosevka"];})
   ];
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
