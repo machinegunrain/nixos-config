@@ -38,9 +38,9 @@
 
   # root packages
   environment.systemPackages = with pkgs; [
-    wget parted git ntfs3g xorg.setxkbmap cachix
-    libde265 x264 libmpeg2 xvidcore
-    mesa pavucontrol nerdfonts
+    wget parted git ntfs3g cachix
+    libde265 x264 libmpeg2 xvidcore ffmpeg_5
+    pavucontrol nerdfonts
 
   ];
 

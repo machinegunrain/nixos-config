@@ -17,8 +17,6 @@
            homeDirectory = "/home/dash";
            stateVersion  = "22.05";
            sessionVariables = {
-              moz_enable_wayland = 1;
-              xdg_current_desktop = "sway";
               EDITOR = "emacsclient -n -c -a emacs";
            };
            keyboard = null;
