@@ -12,10 +12,6 @@ in {
         fonts.size = 12.0;
         command = "waybar";
         position = "top"; }];
-      input."type:keyboard" = {
-        xkb_layout = "us";
-        xkb_variant ="dvp";
-        xkb_options = "grp:ctrl_shift_toggle"; };
       output = { DVI1 = { pos = "0 0"; res = "1920x1080";};};
       fonts = { names = ["PragmataPro Mono Liga"]; size = 12.0;};
       keybindings = {

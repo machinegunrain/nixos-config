@@ -35,6 +35,7 @@
           ./home.nix
           doom-emacs.hmModule
         ];
+
       };
     };
 }
