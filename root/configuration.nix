@@ -16,7 +16,7 @@
 
   # root packages
   environment.systemPackages = with pkgs; [
-    wget parted git ntfs3g
+    wget parted git ntfs3g xorg.setxkbmap
     mesa cachix pavucontrol
   ];
 

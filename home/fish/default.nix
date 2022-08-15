@@ -8,9 +8,9 @@
       set ROOTCONF $HOME/nixos-config/root
     '';
     functions = {
-      fish_greeting = "fortune";
+      fish_greeting = "";
       home-flake = "home-manager switch --flake $HOMECONF/#dash";
-      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#";};
+      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/# --impure";};
     plugins = [
       { name = "z";
         src = pkgs.fetchFromGitHub {
