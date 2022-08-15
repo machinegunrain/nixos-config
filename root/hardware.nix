@@ -1,8 +1,5 @@
 {config, pkgs, lib, ... }:
 {
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
 
   hardware.bluetooth = {
     enable = true;
@@ -11,13 +8,18 @@
     settings =  { General = { ControllerMode = "bredr"; };};
   };
 
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+
   hardware = {
   opengl =
     let
       fn = oa: {
         nativeBuildInputs = oa.nativeBuildInputs ++ [ pkgs.glslang ];
         mesonFlags = oa.mesonFlags ++ [ "-Dvulkan-layers=device-select,overlay" ];
-        # patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ];
+        patches = oa.patches ++ [ ./mesa-vulkan-layer-nvidia.patch ];
         postInstall = oa.postInstall + ''
             mv $out/lib/libVkLayer* $drivers/lib
             #Device Select layer
@@ -36,7 +38,12 @@
       driSupport32Bit = true;
       package = (mesa.overrideAttrs fn).drivers;
       package32 = (pkgsi686Linux.mesa.overrideAttrs fn).drivers;
-      extraPackages = with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl];
+      extraPackages = with pkgs; [libvdpau-va-gl nvidia-vaapi-driver vaapiVdpau];
     };
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME= "vdpau";
+    VDPAU_DRIVER_NAME= "nvidia";
   };
 }
