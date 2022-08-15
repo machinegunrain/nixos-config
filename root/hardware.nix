@@ -1,4 +1,8 @@
-{config, pkgs, lib, ... }: {
+{config, pkgs, lib, ... }:
+{
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
 
   hardware.bluetooth = {
     enable = true;
@@ -32,6 +36,7 @@
       driSupport32Bit = true;
       package = (mesa.overrideAttrs fn).drivers;
       package32 = (pkgsi686Linux.mesa.overrideAttrs fn).drivers;
+      extraPackages = with pkgs; [ intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl];
     };
   };
 }
