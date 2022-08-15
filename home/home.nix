@@ -8,6 +8,7 @@ in  {
     ./fish
     ./foot
     ./sway
+    ./rofi
   ];
 
   programs.home-manager.enable = true;
@@ -19,13 +20,15 @@ in  {
               xdg_current_desktop = "sway";
            };
            keyboard = null;
-           packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard wofi mako fd
-                                   nix-prefetch-github neofetch fortune
+           packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard mako fd
+                                   nix-prefetch-github neofetch
                                    texlive.combined.scheme-full
                                    mpv spotify ] ++ extra;
            };
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  programs.librewolf.enable = true;
 
 }

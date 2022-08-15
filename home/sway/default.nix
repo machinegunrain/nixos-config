@@ -7,7 +7,7 @@ in {
     wrapperFeatures.gtk = true;
     config = {
       terminal = "footclient";
-      menu = "wofi -show run";
+      menu = "rofi -show drun";
       bars = [{
         fonts.size = 12.0;
         command = "waybar";
@@ -57,7 +57,7 @@ in {
         "${modifier}+Up" = "focus up";
         "${modifier}+a" = "focus parent";
         "${modifier}+b" = "splith";
-        "${modifier}+d" = "exec wofi --show run";
+        "${modifier}+d" = "exec rofi -show drun";
         "${modifier}+e" = "layout toggle split";
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+h" = "focus left";

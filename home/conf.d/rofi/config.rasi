@@ -1,0 +1,171 @@
+/*
+ *
+ * Author  : Manita Talcharus
+ * Mail    : manita_tcrs@pm.me
+ * Github  : @mekter
+ * Mastodon : @dash@mastodon.in.th
+ *
+ */
+
+configuration {
+    modi:                           "run,drun";
+    lines:                          10;
+    columns:                        1;
+    font:                           "PragmataPro 12";
+    bw:                             0;
+    location:                       0;
+    padding:                        0;
+    fixed-num-lines:                true;
+    show-icons:                     false;
+    sidebar-mode:                   true;
+    separator-style:                "none";
+    hide-scrollbar:                 true;
+    fullscreen:                     false;
+    fake-transparency:              false;
+    scroll-method:                  0;
+    window-format:                  "[{w}] ··· {c} ···   {t}";
+    click-to-exit:                  true;
+    show-match:                     false;
+    combi-hide-mode-prefix:         false;
+    display-window:                 "";
+    display-windowcd:               "b";
+    display-drun:                    "";
+    display-run:                    "";
+    display-ssh:                    "🅂";
+    display-combi:                  "";
+}
+
+@import "styles/city-light.rasi"
+
+* {
+    background-color:             	@bgl;
+}
+
+window {
+    border: 						0px;
+    border-color: 					@bg;
+    border-radius: 					0px;
+    padding: 						5px;
+    width: 							20%;
+    background-color:               @bgl;
+}
+
+prompt {
+    spacing: 						0;
+    border: 						0;
+    text-color: 					@grs;
+}
+
+textbox-prompt-colon {
+    expand: 						false;
+    str: 							"";
+    margin:						7px 3px 3px 3px;
+    text-color: 					inherit;
+}
+
+entry {
+    spacing:    					0;
+    text-color: 					@grs;
+    placeholder-color:              @ac;
+}
+
+case-indicator {
+    spacing:    					0;
+    text-color: 					@fg;
+}
+
+inputbar {
+    spacing:    					0px;
+    text-color: 					@grs;
+    padding:    					5px 0px 0px 0px;
+    children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+mainbox {
+    border: 						0px;
+    border-color: 					@ac;
+    padding: 						2;
+}
+
+listview {
+    fixed-height: 					0;
+    border: 						0px;
+    border-color: 					@ac;
+    spacing: 						1px;
+    scrollbar: 						false;
+    padding: 						0px 3px 3px 3px;
+}
+
+element {
+    background-color:               @bgl;
+    padding:                        4px 5px 4px 5px;
+}
+
+element normal.normal {
+    text-color:       				@fg;   
+    background-color:               @bgl;
+}
+element normal.urgent {
+    text-color:       				@red;
+}
+element normal.active {
+    text-color:       				@green;
+}
+element selected.normal {
+    background-color:               @grs;
+    text-color:       				@cyan;
+}
+
+element selected.urgent {
+    text-color:       				@red;
+}
+element selected.active {
+    text-color:       				@bg;
+}
+element alternate.normal {
+    text-color:       				@fg;
+    background-color:               @bgl;
+}
+element alternate.urgent {
+    text-color:       				@fg;
+}
+element alternate.active {
+    text-color:       				@fg;
+}
+
+sidebar {
+    border:       					0px;
+    border-color: 					@ac;
+    border-radius: 					0px;
+}
+
+button {
+    background-color:             	@bg;
+    margin: 						5px;
+    padding: 						5px 5px 5px 5px;
+    text-color: 					@ac;
+}
+
+button selected {
+    background-color:             	@grs;
+    text-color: 					@cyan;
+    
+}
+
+scrollbar {
+    width:        					3px;
+    border:       					0px;
+    handle-color: 					@fg;
+    handle-width: 					6px;
+    padding:      					0;
+}
+
+message {
+    border: 						0px;
+    border-color: 					@ac;
+    padding: 						0px;
+}
+
+textbox {
+    text-color: 					@fg;
+}
