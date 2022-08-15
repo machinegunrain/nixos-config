@@ -1,14 +1,15 @@
 { config, lib, pkgs, ... }:
-let
-  extra = import ./extra.nix { inherit config pkgs; };
-in  {
+{
   imports = [
+    ./discord
     ./emacs
     ./firefox
     ./fish
     ./foot
-    ./sway
+    ./gtk
     ./rofi
+    ./sway
+    ./waybar
   ];
 
   programs.home-manager.enable = true;
@@ -18,17 +19,14 @@ in  {
            sessionVariables = {
               moz_enable_wayland = 1;
               xdg_current_desktop = "sway";
+              EDITOR = "emacsclient -n -c -a emacs";
            };
            keyboard = null;
-           packages = with pkgs; [ htop unzip i2c-tools wayland swaylock swayidle waybar wl-clipboard mako fd
-                                   nix-prefetch-github neofetch
-                                   texlive.combined.scheme-full
-                                   mpv spotify ] ++ extra;
+           packages = with pkgs; [ htop unzip i2c-tools mako fd nix-prefetch-github
+                                   neofetch texlive.combined.scheme-full
+                                   mpv spotify ];
            };
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-
-  programs.librewolf.enable = true;
-
 }

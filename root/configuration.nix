@@ -44,6 +44,8 @@
 
   ];
 
+  environment.variables.EDITOR = "emacsclient -n -c -a emacs";
+
 
   fonts.fonts = with pkgs; [
    noto-fonts-cjk

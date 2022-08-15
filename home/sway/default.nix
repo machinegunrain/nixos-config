@@ -1,11 +1,25 @@
 {config, lib, pkgs, ... }:
 let
+  dbus-sway-environment = pkgs.writeTextFile {
+  name = "dbus-sway-environment";
+  destination = "/bin/dbus-sway-enviroment";
+  executable = true;
+  text = ''
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+     systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+     systemctl --uses start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+     '';
+  };
   modifier = config.wayland.windowManager.sway.config.modifier;
-in {
+
+in
+{ home.packages = with pkgs; [ wayland dbus-sway-environment swaylock swayidle wl-clipboard ];
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     config = {
+      window.border = 0;
       terminal = "footclient";
       menu = "rofi -show drun";
       bars = [{
