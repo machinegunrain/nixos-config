@@ -40,7 +40,7 @@
   environment.systemPackages = with pkgs; [
     wget parted git ntfs3g cachix libglvnd
     libde265 openh264 faad2 xvidcore ffmpeg_5 libmad
-    pavucontrol nerdfonts zlib ranger
+    pavucontrol nerdfonts zlib
     freeglut cudatoolkit ghostscript
   ];
 

@@ -1,27 +1,33 @@
-{config, lib, pkgs, ...}:
-let
-  configure-gtk = pkgs.writeTextFile {
-  name = "configure-gtk";
-  destination = "/bin/configure-gtk";
-  executable = true;
-  text = let
-  schema = pkgs.gsettings-desktop-schemas;
-  datadir = "${schema}/share/gsetting-schemas/${schema.name}";
-  in ''
-      export XDG_DATA_DIR=${datadir}:$XDG_DATA_DIRS
-      gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome-schema font-name 'Iosevka'
-      gsettings set $gnome_schema gtk-theme "Pop"
-      gsettings set $gnome_schema icom-theme "Pop"
-      gsettings set $gnome_schema cursor-theme "capitaine-dark"
-
-  '';
-  };
-
-in
+{config, lib, pkgs, unstable, ...}:
 {
   home.packages = with pkgs; [
-    configure-gtk glib gnome3.adwaita-icon-theme
+    glib gnome3.adwaita-icon-theme
     xsettingsd pop-gtk-theme pop-icon-theme capitaine-cursors
+    at-spi2-core dconf nordic papirus-icon-theme pcmanfm
   ];
+
+  gtk.enable = true;
+  gtk.font.name = "aileron";
+  gtk.font.package = pkgs.aileron;
+  gtk.theme.name = "Nordic";
+  gtk.theme.package = pkgs.nordic;
+  gtk.iconTheme.name = "Papirus-Dark";  # Candy and Tela also look good
+  gtk.iconTheme.package = pkgs.papirus-icon-theme;
+  gtk.gtk3.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+    gtk-key-theme-name    = "Emacs";
+    gtk-icon-theme-name   = "Papirus-Dark";
+    gtk-cursor-theme-name = "capitaine-cursors";
+  };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-key-theme = "Emacs";
+      cursor-theme = "Capitaine Cursors";
+    };
+  };
+  xdg.systemDirs.data = [
+    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
+
 }

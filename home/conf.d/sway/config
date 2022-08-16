@@ -102,16 +102,6 @@ bar {
 swaybar_command waybar
 }
 
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Pop'
-    gsettings set $gnome-schema icon-theme 'Pop'
-    gsettings set $gnome-schema cursor-theme 'capitaine-dark'
-    gsettings set $gnome-schema font-name 'Iosevka'
-}
-
-
 exec "/nix/store/jaf08x2q6xbxda3jbb79ly0aadi0h06y-dbus-1.14.0/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; systemctl --user start sway-session.target"
 exec dbus-sway-enviroment
 # exec configure-gtk
