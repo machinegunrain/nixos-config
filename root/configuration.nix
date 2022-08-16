@@ -46,8 +46,6 @@
   ];
 
   environment.sessionVariables = {
-    GDK_BACKEND = "wayland";
-    CLUTTER_BACKEND = "wayland";
     EDITOR = "emacsclient -n -c -a emacs";
   };
 
