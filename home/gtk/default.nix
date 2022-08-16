@@ -14,6 +14,9 @@
   gtk.theme.package = pkgs.nordic;
   gtk.iconTheme.name = "Papirus-Dark";  # Candy and Tela also look good
   gtk.iconTheme.package = pkgs.papirus-icon-theme;
+  gtk.cursorTheme.name = "capitaine-cursors-light";
+  gtk.cursorTheme.package = pkgs.capitaine-cursors;
+  gtk.cursorTheme.size = 16;
   gtk.gtk3.extraConfig = {
     gtk-application-prefer-dark-theme = true;
     gtk-key-theme-name    = "Emacs";

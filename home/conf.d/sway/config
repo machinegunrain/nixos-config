@@ -105,7 +105,7 @@ swaybar_command waybar
 set $my_cursor capitaine-cursors-light
 set $my_cursor_size 16
 
-seat seat- xcursor_theme $my_cursor $my_cursor_size
+seat seat0 xcursor_theme $my_cursor $my_cursor_size
 exec_always {
     gsettings set org.gnome.desktop.interface cursor-theme $my_cursor
     gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
