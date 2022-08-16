@@ -41,8 +41,7 @@
     wget parted git ntfs3g cachix libglvnd
     libde265 openh264 faad2 xvidcore ffmpeg_5 libmad
     pavucontrol nerdfonts zlib ranger
-    freeglut cudatoolkit
-
+    freeglut cudatoolkit ghostscript
   ];
 
   environment.sessionVariables = {
@@ -53,6 +52,8 @@
   fonts.fonts = with pkgs; [
    noto-fonts-cjk
    noto-fonts-emoji
+   aileron
+   gyre-fonts
    (nerdfonts.override { fonts = ["Iosevka"];})
   ];
 
