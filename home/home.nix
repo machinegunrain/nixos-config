@@ -6,7 +6,7 @@
     ./firefox
     ./fish
     ./foot
-    # ./gtk
+    ./gtk
     ./rofi
     ./sway
     ./waybar
