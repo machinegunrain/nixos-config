@@ -102,7 +102,7 @@ bar {
 swaybar_command waybar
 }
 
-set $my_cursor capitaine-cursors
+set $my_cursor capitaine-cursors-light
 set $my_cursor_size 16
 
 seat seat- xcursor_theme $my_cursor $my_cursor_size
