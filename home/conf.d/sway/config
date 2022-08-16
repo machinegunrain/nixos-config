@@ -102,6 +102,15 @@ bar {
 swaybar_command waybar
 }
 
+set $my_cursor capitaine-cursors
+set $my_cursor_size 16
+
+seat seat- xcursor_theme $my_cursor $my_cursor_size
+exec_always {
+    gsettings set org.gnome.desktop.interface cursor-theme $my_cursor
+    gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
+}
+
 exec "/nix/store/jaf08x2q6xbxda3jbb79ly0aadi0h06y-dbus-1.14.0/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; systemctl --user start sway-session.target"
 exec dbus-sway-enviroment
 # exec configure-gtk
