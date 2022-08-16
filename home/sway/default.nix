@@ -36,7 +36,13 @@ in
         xkb_layout = "us,ThaiMnc";
         xkb_variant ="dvp,";
         xkb_options = "grp:ctrl_shift_toggle";};
-      output = { DVI1 = { pos = "0 0"; res = "1920x1080";};};
+      output = {
+        DVI-D-1 = {
+          pos = "0 0"; res = "1920x1080@75hz";
+          modeline = "75.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync";
+          bg = "~/Pictures/sora-sagano-bjezPap-tmQ-unsplash.jpg fill";
+        };
+      };
       fonts = { names = ["PragmataPro Mono Liga"]; size = 12.0;};
       keybindings =
       { "${modifier}+ampersand" = "workspace number 1";
