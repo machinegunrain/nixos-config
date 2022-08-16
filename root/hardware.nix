@@ -44,7 +44,7 @@
   };
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "vdpau";
+    LIBVA_DRIVER_NAME = "nouveau";
     VDPAU_DRIVER = "nouveau";
   };
 }

@@ -6,34 +6,40 @@ let
   executable = true;
   text = ''
      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-     systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-     systemctl --uses start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+     systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
+     systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
      '';
   };
   modifier = config.wayland.windowManager.sway.config.modifier;
 
 in
-{ home.packages = with pkgs; [ wayland dbus-sway-environment swaylock swayidle wl-clipboard ];
-
+{ home.packages = with pkgs; [ wayland dbus-sway-environment swaylock swaybg swayidle wl-clipboard
+                               grim slurp
+                             ];
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    config = {
-      window.border = 0;
+    config =
+    { window.border = 0;
       terminal = "footclient";
       menu = "rofi -show drun";
-      bars = [{
-        fonts.size = 12.0;
+      bars =
+      [{
+        fonts =
+        { names = [ "Iosevka" "NerdFonts" ];
+          style = "Light";
+          size = 11.0;};
         command = "waybar";
         position = "top"; }];
-      input."type:keyboard" = {
+      input."type:keyboard" =
+      {
         xkb_layout = "us,ThaiMnc";
         xkb_variant ="dvp,";
-        xkb_options = "grp:ctrl_shift_toggle"; };
+        xkb_options = "grp:ctrl_shift_toggle";};
       output = { DVI1 = { pos = "0 0"; res = "1920x1080";};};
       fonts = { names = ["PragmataPro Mono Liga"]; size = 12.0;};
-      keybindings = {
-        "${modifier}+ampersand" = "workspace number 1";
+      keybindings =
+      { "${modifier}+ampersand" = "workspace number 1";
         "${modifier}+bracketleft" = "workspace number 2";
         "${modifier}+braceleft" = "workspace number 3";
         "${modifier}+braceright" = "workspace number 4";
@@ -72,6 +78,8 @@ in
         "${modifier}+a" = "focus parent";
         "${modifier}+b" = "splith";
         "${modifier}+d" = "exec rofi -show drun";
+        "${modifier}+Delete" = "exec slurp";
+        "Delete" = "exec grim -t png -l 9 ~/Screenshots/$(date +'%y%m%d-%H:%M:%S').png";
         "${modifier}+e" = "layout toggle split";
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+h" = "focus left";

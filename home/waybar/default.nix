@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.waybar =
-  { enable = true; };
+  home.packages = with pkgs; [ waybar wf-recorder];
 }

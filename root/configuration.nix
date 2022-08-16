@@ -38,13 +38,18 @@
 
   # root packages
   environment.systemPackages = with pkgs; [
-    wget parted git ntfs3g cachix
-    libde265 x264 libmpeg2 xvidcore ffmpeg_5
-    pavucontrol nerdfonts
+    wget parted git ntfs3g cachix libglvnd
+    libde265 openh264 faad2 xvidcore ffmpeg_5 libmad
+    pavucontrol nerdfonts zlib
+    freeglut cudatoolkit
 
   ];
 
-  environment.variables.EDITOR = "emacsclient -n -c -a emacs";
+  environment.sessionVariables = {
+    GDK_BACKEND = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    EDITOR = "emacsclient -n -c -a emacs";
+  };
 
 
   fonts.fonts = with pkgs; [
