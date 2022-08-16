@@ -98,8 +98,7 @@ mode "resize" {
 
 bar {
   font pango:Iosevka, NerdFonts Light 11.000000
-  position top
-swaybar_command waybar
+  swaybar_command waybar
 }
 
 set $my_cursor capitaine-cursors-light
