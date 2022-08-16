@@ -8,6 +8,7 @@
     ./foot
     ./gtk
     ./rofi
+    ./spotify
     ./sway
     ./waybar
   ];
@@ -21,9 +22,8 @@
            };
            keyboard = null;
            packages = with pkgs; [ htop unzip i2c-tools mako fd nix-prefetch-github
-                                   fzf ripgrep
-                                   neofetch texlive.combined.scheme-full
-                                   mpv spotify geeqie ];
+                                   fzf ripgrep neofetch texlive.combined.scheme-full
+                                   mpv geeqie ];
            };
 
   programs.direnv.enable = true;
