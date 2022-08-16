@@ -14,7 +14,7 @@ let
 
 in
 { home.packages = with pkgs; [ wayland dbus-sway-environment swaylock swaybg swayidle wl-clipboard
-                               grim slurp
+                               grim slurp wlroots
                              ];
 
   wayland.windowManager.sway = {

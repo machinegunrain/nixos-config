@@ -4,6 +4,7 @@
     glib gnome3.adwaita-icon-theme
     xsettingsd pop-gtk-theme pop-icon-theme capitaine-cursors
     at-spi2-core dconf nordic papirus-icon-theme pcmanfm
+    vanilla-dmz
   ];
 
   gtk.enable = true;
@@ -13,16 +14,17 @@
   gtk.theme.package = pkgs.nordic;
   gtk.iconTheme.name = "Papirus-Dark";  # Candy and Tela also look good
   gtk.iconTheme.package = pkgs.papirus-icon-theme;
+  gtk.cursorTheme.name = "capitaine-cursors";
+  gtk.cursorTheme.package = pkgs.capitaine-cursors;
+  gtk.cursorTheme.size = 16;
   gtk.gtk3.extraConfig = {
     gtk-application-prefer-dark-theme = true;
     gtk-key-theme-name    = "Emacs";
     gtk-icon-theme-name   = "Papirus-Dark";
-    gtk-cursor-theme-name = "capitaine-cursors";
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       gtk-key-theme = "Emacs";
-      cursor-theme = "Capitaine Cursors";
     };
   };
   xdg.systemDirs.data = [
