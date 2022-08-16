@@ -10,15 +10,17 @@ let
   in ''
       export XDG_DATA_DIR=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Dracula'
-      gsettings set $gnome_schema icon-theme 'Adwaita'
+      gsettings set $gnome_schema gtk-theme "Nordic"
   '';
   };
 
 in
 {
   home.packages = with pkgs; [
-    configure-gtk glib
-    dracula-theme gnome3.adwaita-icon-theme
+    configure-gtk glib gnome3.adwaita-icon-theme
+    xsettingsd
   ];
+
+  home.file.".themes".source = ./themes;
+
 }
