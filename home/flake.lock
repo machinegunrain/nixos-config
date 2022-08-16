@@ -351,6 +351,21 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1655043425,
+        "narHash": "sha256-A+oT+aQGhW5lXy8H0cqBLsYtgcnT5glmGOXWQDcGw6I=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "914ef51ffa88d9b386c71bdc88bffc5273c08ada",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "nose": {
       "flake": false,
       "locked": {
@@ -468,7 +483,8 @@
         "doom-emacs": "doom-emacs",
         "emacs": "emacs",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "rotate-text": {
@@ -500,6 +516,24 @@
       "original": {
         "owner": "sensorflo",
         "repo": "sln-mode",
+        "type": "github"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1660540848,
+        "narHash": "sha256-BBJxzxixvJ2NdR2N5we7LBzO7iS4DO+S2vYoNSV6GjM=",
+        "owner": "the-argus",
+        "repo": "spicetify-nix",
+        "rev": "c325a18deb4a65366c92194083e2629b2a473961",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "spicetify-nix",
         "type": "github"
       }
     },

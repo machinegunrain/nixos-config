@@ -10,6 +10,8 @@
     };
     emacs.url = "github:nix-community/emacs-overlay";
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
   };
 
   outputs = {
@@ -17,6 +19,7 @@
     home-manager,
     emacs,
     doom-emacs,
+    spicetify-nix,
     ...
     }:
     let
@@ -34,6 +37,7 @@
         modules = [
           ./home.nix
           doom-emacs.hmModule
+          spicetify-nix.homeManagerModule
         ];
 
       };
