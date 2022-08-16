@@ -6,7 +6,7 @@
       main = { term = "xterm-256color";
                font = "PragmataPro Mono Liga:size=12";
                dpi-aware = "yes";};
-      mouse = { hide-when-typing = true;};
+      mouse = { hide-when-typing = false;};
       colors = {
         foreground = "d8dee9";
         background = "2e3440";
