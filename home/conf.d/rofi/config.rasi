@@ -65,8 +65,8 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					@grs;
-    placeholder-color:              @ac;
+    text-color: 					@dblue;
+    placeholder-color:              @bgl;
 }
 
 case-indicator {
@@ -140,15 +140,15 @@ sidebar {
 }
 
 button {
-    background-color:             	@bg;
+    background-color:             	@bgl;
     margin: 						5px;
     padding: 						5px 5px 5px 5px;
     text-color: 					@ac;
 }
 
 button selected {
-    background-color:             	@grs;
-    text-color: 					@cyan;
+    background-color:             	@bgl;
+    text-color: 					@ac;
     
 }
 
