@@ -96,7 +96,6 @@ mode "resize" {
 }
 
 bar {
-  font pango:Iosevka, NerdFonts Light 11.000000
   swaybar_command waybar
 }
 
