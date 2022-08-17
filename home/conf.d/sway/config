@@ -16,8 +16,7 @@ client.urgent #2f343a #900000 #ffffff #900000 #900000
 client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
 client.background #ffffff
 
-bindsym Delete exec grim -t png -l 9 ~/Screenshots/$(date +'%y%m%d-%H:%M:%S').png
-bindsym Mod1+Delete exec slurp
+bindsym Delete exec grim -t png -l 9 ~/Screenshots/$(date +'%y%m%d-%H:%M:%S').png &&  wl-copy -t image/png < $(ls -dt ~/Screenshots/* | head -1)
 bindsym Mod1+Down focus down
 bindsym Mod1+Left focus left
 bindsym Mod1+Return exec foot
@@ -110,6 +109,10 @@ exec_always {
     gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
 }
 
+
 exec "/nix/store/jaf08x2q6xbxda3jbb79ly0aadi0h06y-dbus-1.14.0/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP; systemctl --user start sway-session.target"
-exec dbus-sway-enviroment
-# exec configure-gtk
+
+exec swayidle -w \
+	timeout 1800 'swaylock -f' \
+	timeout 1805 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"'
