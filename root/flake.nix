@@ -6,7 +6,7 @@
 
   };
 
-  outputs = { self, nixpkgs, kmonad, ... }@attrs: {
+  outputs = { self, nixpkgs, ... }@attrs: {
     nixosConfigurations.workspace = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
