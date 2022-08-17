@@ -1,26 +1,59 @@
 {
     "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["custom/nixos","sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["battery", "clock", "idle_inhibitor"],
+    "modules-right": ["tray", "network", "cpu", "memory", "clock"],
+    "custom/nixos": {
+        "format": "",
+    },
     "sway/window": {
+        "tooltip": false,
         "max-length": 75,
+        "on-click": "sleep 0.1 ; pgrep slurp || (swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\\(.x),\\(.y) \\(.width)x\\(.height)\"' | XCURSOR_SIZE=48 slurp -w 1 -c A5BAD1 -s C3DFFE94 | grim -g - ~/Screenshots/$(date +'Screenshot_%Y-%m-%d_%H%M%S.png')) && wl-copy -t image/png < \"$(ls -dt ~/Screenshots/* | head -1)\"",
+        "on-click-middle": "sleep 0.1 ; pgrep slurp || (swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\\(.x),\\(.y) \\(.width)x\\(.height)\"' | XCURSOR_SIZE=48 slurp -w 1 -c A5BAD1 -s C3DFFE94 | grim -g - ~/Screenshots/$(date +'Screenshot_%Y-%m-%d_%H%M%S.png')) && wl-copy -t image/png < \"$(ls -dt ~/Screenshots/* | head -1)\"",
+        "on-click-right": "killall -s SIGINT wf-recorder"
     },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-     "idle_inhibitor": {
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": " "
-        },
-        "on-click-middle": "swaymsg \\[title=\"^Calendar\\s\\|\\sFastmail$\" \\] focus || firefox --new-tab https://fastmail.com/calendar",
-        "on-click-right": "swaylock",
-        "tooltip": false
+            "1": "α",
+            "2": "π",
+            "3": "ω",
+            "4": "τ",
+            "5": "μ",
+            "6": "κ",
+        }
     },
+    "tray": {
+        "icon-size": 19,
+        "spacing": 10
+    },
+    "cpu": {
+        "interval": 2,
+        "format": "{usage:02}%"
+    },
+    "memory": {
+        "format": "{:02}%"
+    },
+    "clock": {
+        "format-alt": "{:%a, %d %b %H:%M}"
+    },
+    "network": {
+        "interval": 2,
+        "on-click-right": "",
+        "on-click-middle": "",
+        "tooltip-format-wifi": "{essid}\nSignal strength: {signalStrength}%",
+        "tooltip-format-disabled": "Wi-Fi is disabled",
+        "tooltip-format-ethernet": "{ifname}",
+        "format": "{icon}",
+        "format-icons": {
+            "wifi": ["I", "II", "III", "IIII", "IIIII"],
+            "ethernet": "",
+            "disconnected": "",
+            "disabled": "",
+            "linked": ""
+        }
+    }
 }

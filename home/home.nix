@@ -23,7 +23,7 @@
            keyboard = null;
            packages = with pkgs; [ htop unzip i2c-tools mako fd nix-prefetch-github
                                    fzf ripgrep neofetch texlive.combined.scheme-full
-                                   mpv geeqie lsix ueberzug playerctl];
+                                   mpv geeqie lsix ueberzug playerctl sioyek];
            };
 
   programs.direnv.enable = true;
