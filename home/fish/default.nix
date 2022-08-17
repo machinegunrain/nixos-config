@@ -1,6 +1,9 @@
 { config, lib, pkgs, ...}: {
   programs.fish = {
     enable = true;
+    shellAliases = {
+      neofetch = "neofetch --ascii ~/nixos_config/home/fish/nixos.ascii --ascii_colors 6 3";
+    };
     shellAbbrs = {
       vi = "emacsclient -nca emacs";};
     shellInit = ''
