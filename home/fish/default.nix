@@ -5,7 +5,9 @@
       neofetch = "neofetch --ascii ~/nixos_config/home/fish/nixos.ascii --ascii_colors 6 3";
     };
     shellAbbrs = {
-      vi = "emacsclient -nca emacs";};
+      vi = "emacsclient -nca emacs";
+      ls = "exa --all --long --header --git";
+    };
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
       set ROOTCONF $HOME/nixos-config/root
