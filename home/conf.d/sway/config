@@ -100,6 +100,15 @@ bar {
   swaybar_command waybar
 }
 
+assign [app_id="foot"] workspace 1
+assign [instance="emacs"] workspace 2
+assign [app_id="firefox"] workspace 3
+assign [app_id="sioyek"] workspace 4
+assign [instance="spotify"] workspace 5
+assign [class="discord"] workspace 5
+assign [app_id="mpv"] workspace 6
+
+
 set $my_cursor capitaine-cursors-light
 set $my_cursor_size 16
 
