@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    kmonad.url = "github:kmonad/kmonad?dir=nix";
 
   };
 
@@ -13,7 +12,6 @@
       specialArgs = attrs;
       modules = [
         ./configuration.nix
-        kmonad.nixosModules.default
       ];
     };
   };
