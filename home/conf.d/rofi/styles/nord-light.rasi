@@ -1,0 +1,30 @@
+/* colors */
+
+/*
+ inputbar and promt
+   text-acc
+ inputbar place holder
+   text-light
+
+ element normal
+   text-normal
+ selected element
+   text-selected
+   bg-selected
+
+ button
+   text-normal
+ selected button
+   text-dark
+*/
+
+* {
+  text-acc: #5e81acff;
+  text-selected: #2e3440ff;
+  text-normal: #4c566aff;
+  text-light: #d8dee9ff;
+  bg: #eceff4ff;
+  bg-selected: #88c0d0ff;
+  red:  #bf616aff;
+
+}
