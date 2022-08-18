@@ -11,7 +11,6 @@
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
       set ROOTCONF $HOME/nixos-config/root
-      set SSH_AUTH_SOCK /run/user/1000/keyring/ssh
 
       # Colorscheme: Nord
       set -U fish_color_normal normal

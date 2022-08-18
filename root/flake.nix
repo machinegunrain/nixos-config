@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
   };
 
   outputs = { self, nixpkgs, ... }@attrs: {
@@ -11,7 +10,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./configuration.nix
+        ./workspace/configuration.nix
       ];
     };
   };

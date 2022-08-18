@@ -25,7 +25,7 @@
            packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age
                                    fd ripgrep procs tldr exa bat tokei
                                    fzf neofetch texlive.combined.scheme-full
-                                   mpv geeqie lsix ueberzug playerctl sioyek];
+                                   mpv geeqie lsix ueberzug playerctl sioyek glow];
            };
 
   programs.direnv.enable = true;
