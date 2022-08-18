@@ -2,12 +2,13 @@
   description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix.url = "github:Mic92/sops-nix";
     emacs.url = "github:nix-community/emacs-overlay";
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
@@ -17,6 +18,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    sops-nix,
     emacs,
     doom-emacs,
     spicetify-nix,
@@ -38,6 +40,7 @@
           ./home.nix
           doom-emacs.hmModule
           spicetify-nix.homeManagerModule
+          sops-nix.nixosModules.sops
         ];
 
       };

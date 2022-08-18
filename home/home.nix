@@ -11,6 +11,7 @@
     ./spotify
     ./sway
     ./waybar
+    ./environment/base
   ];
 
   programs.home-manager.enable = true;
@@ -21,7 +22,7 @@
               EDITOR = "emacsclient -n -c -a emacs";
            };
            keyboard = null;
-           packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools mako
+           packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age
                                    fd ripgrep procs tldr exa bat tokei
                                    fzf neofetch texlive.combined.scheme-full
                                    mpv geeqie lsix ueberzug playerctl sioyek];
@@ -29,4 +30,10 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  programs.keychain = {
+    enable = true;
+    enableFishIntegration = true;
+    agents = [ "ssh" ];
+  };
 }
