@@ -1,5 +1,5 @@
 {config, lib, pkgs, ...}:
 {
   home.packages = with pkgs; [ rofi-wayland ];
-  xdg.configFile."rofi".source = ../conf.d/rofi;
+  xdg.configFile."rofi".source = ./config/rofi;
 }

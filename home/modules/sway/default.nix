@@ -22,6 +22,6 @@ in
     wrapperFeatures.gtk = true;
   };
 
-  home.file.".icons/default".source = ../conf.d/sway/capitine-cursors-light;
-  xdg.configFile."sway".source = ../conf.d/sway;
+  home.file.".icons/default".source = ./capitine-cursors-light;
+  xdg.configFile."sway".source = ./config;
 }

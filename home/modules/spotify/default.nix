@@ -29,7 +29,4 @@
         "shuffle+.js"
       ];
     };
-
-  # home.file.".config/spicetify/Themes".source = ../conf.d/spicetify/Themes;
-  # xdg.configFile."spicetify".source = ../conf.d/spicetify;
 }

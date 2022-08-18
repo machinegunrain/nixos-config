@@ -1,17 +1,16 @@
 { config, lib, pkgs, gnome, ... }:
 {
   imports = [
-    ./discord
-    ./emacs
-    ./firefox
-    ./fish
-    ./foot
-    ./gtk
-    ./rofi
-    ./spotify
-    ./sway
-    ./waybar
-    ./environment/base
+    ./modules/discord
+    ./modules/emacs
+    ./modules/firefox
+    ./modules/fish
+    ./modules/foot
+    ./modules/gtk
+    ./modules/rofi
+    ./modules/spotify
+    ./modules/sway
+    ./modules/waybar
   ];
 
   programs.home-manager.enable = true;
