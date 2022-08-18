@@ -6,7 +6,7 @@
     };
     shellAbbrs = {
       vi = "emacsclient -nca emacs";
-      ls = "exa --all --long --header --git";
+      ls = "exa --long --header --git --all";
     };
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
