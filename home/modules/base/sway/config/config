@@ -53,7 +53,7 @@ bindsym Mod1+b splith
 bindsym Mod1+braceleft workspace number 3
 bindsym Mod1+braceright workspace number 4
 bindsym Mod1+bracketleft workspace number 2
-bindsym Mod1+d exec rofi -show drun
+bindsym Mod1+BackSpace exec rofi -show drun
 bindsym Mod1+e layout toggle split
 bindsym Mod1+equal workspace number 6
 bindsym Mod1+f fullscreen toggle
