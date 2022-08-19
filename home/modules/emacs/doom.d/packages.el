@@ -1,2 +1,1 @@
-(package! fzf)
-(package! rg)
+(package! org-auto-tangle)
