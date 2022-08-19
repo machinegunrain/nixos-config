@@ -10,8 +10,11 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./workspace/configuration.nix
+        ./modules/base
+        ./modules/nvidia
+        ./hosts/workspace
       ];
     };
   };
+
 }

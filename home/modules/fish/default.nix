@@ -10,7 +10,7 @@
     };
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
-      set ROOTCONF $HOME/nixos-config/root/workspace
+      set ROOTCONF $HOME/nixos-config/root
 
       # Colorscheme: Nord
       set -U fish_color_normal normal
@@ -55,7 +55,7 @@
     functions = {
       fish_greeting = "";
       home-flake = "home-manager switch --flake $HOMECONF/#dash";
-      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#";};
+      root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#workspace";};
     plugins = [
       { name = "z";
         src = pkgs.fetchFromGitHub {
