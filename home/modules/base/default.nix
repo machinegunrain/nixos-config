@@ -1,10 +1,17 @@
 { config, lib, pkgs, gnome, ... }:
+
 {
   imports = [
-    ./modules
-    ./pls
+    ./emacs
+    ./firefox
+    ./fish
+    ./foot
+    ./gtk
+    ./languages
+    ./rofi
+    ./sway
+    ./waybar
   ];
-
   programs.home-manager.enable = true;
   home = { username = "dash";
            homeDirectory = "/home/dash";
@@ -14,8 +21,7 @@
            };
            keyboard = null;
            packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age
-                                   fd ripgrep procs tldr exa bat tokei
-                                   fzf neofetch texlive.combined.scheme-full
+                                   fzf neofetch  fd ripgrep procs tldr exa bat tokei
                                    mpv geeqie lsix ueberzug playerctl sioyek glow];
            };
 
