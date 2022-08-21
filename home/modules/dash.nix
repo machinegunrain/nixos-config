@@ -3,5 +3,6 @@
     ./base
     ./discord
     ./spotify
+    ./base/languages/elixir
   ];
 }
