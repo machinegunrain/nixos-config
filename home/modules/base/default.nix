@@ -7,7 +7,6 @@
     ./fish
     ./foot
     ./gtk
-    ./dev
     ./rofi
     ./sway
     ./waybar
