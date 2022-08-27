@@ -7,7 +7,6 @@
     shellAbbrs = {
       vi = "emacsclient -nca emacs";
       ls = "exa --long --header --git --all";
-      z = "zoxide";
     };
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
