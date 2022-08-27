@@ -18,7 +18,7 @@
   environment.systemPackages = with pkgs; [
     wget parted git ntfs3g cachix libglvnd
     libde265 openh264 faad2 xvidcore ffmpeg_5 libmad
-    pavucontrol nerdfonts zlib sqlite postgresql
+    pavucontrol nerdfonts zlib sqlite
     freeglut ghostscript
   ];
 
@@ -80,8 +80,8 @@
   # networking.interfaces.wls6.useDHCP = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 57621];
-  networking.firewall.allowedUDPPorts = [ 67 68 161 162 ];
+  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 3000 5432 8080 8888 57621];
+  networking.firewall.allowedUDPPorts = [ 67 68 161 162];
   # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
