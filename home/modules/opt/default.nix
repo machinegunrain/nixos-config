@@ -1,5 +1,6 @@
 {config, lib, pkgs, ... }: {
   imports = [
-    ./python
+    ./discord
+    ./spotify
   ];
 }

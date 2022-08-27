@@ -7,7 +7,7 @@
     ./fish
     ./foot
     ./gtk
-    ./languages
+    ./dev
     ./rofi
     ./sway
     ./waybar
@@ -21,7 +21,7 @@
            };
            keyboard = null;
            packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age
-                                   fzf neofetch  fd ripgrep procs tldr exa bat tokei
+                                   fzf neofetch  fd ripgrep procs tldr exa bat tokei zoxide
                                    mpv geeqie lsix ueberzug playerctl sioyek glow];
            };
 

@@ -7,10 +7,13 @@
     shellAbbrs = {
       vi = "emacsclient -nca emacs";
       ls = "exa --long --header --git --all";
+      z = "zoxide";
     };
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
       set ROOTCONF $HOME/nixos-config/root
+
+      zoxide init fish | source
 
       # Colorscheme: Nord
       set -U fish_color_normal normal
@@ -57,12 +60,6 @@
       home-flake = "home-manager switch --flake $HOMECONF/#dash";
       root-flake = "sudo nixos-rebuild switch --flake $ROOTCONF/#workspace";};
     plugins = [
-      { name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";};}
       { name = "hydro";
         src = pkgs.fetchFromGitHub {
           owner = "jorgebucaran";
