@@ -23,5 +23,6 @@
 (package! org-auto-tangle)
 (package! beacon)
 (package! rescript-mode)
+(package! polymode)
 
 ;;; packages.el ends here

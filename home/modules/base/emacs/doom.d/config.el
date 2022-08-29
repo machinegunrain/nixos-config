@@ -50,11 +50,25 @@
 (after! org-rome
   (setq org-rome-directory "~/Documents/org"))
 
-(use-package! org-auto-tangle
-  :defer t
-  :hook (org-mode . org-auto-tangle-mode)
+;; Assumes web-mode and elixir-mode are already set up
+;;
+(use-package polymode
+  :mode ("\.ex$" . poly-elixir-web-mode)
   :config
-  (setq auto-tangle-default t))
+  (define-hostmode poly-elixir-hostmode :mode 'elixir-mode)
+  (define-innermode poly-liveview-expr-elixir-innermode
+    :mode 'web-mode
+    :head-matcher (rx line-start (* space) "~H" (= 3 (char "\"'")) line-end)
+    :tail-matcher (rx line-start (* space) (= 3 (char "\"'")) line-end)
+    :head-mode 'host
+    :tail-mode 'host
+    :allow-nested nil
+    :keep-in-mode 'host
+    :fallback-mode 'host)
+  (define-polymode poly-elixir-web-mode
+    :hostmode 'poly-elixir-hostmode
+    :innermodes '(poly-liveview-expr-elixir-innermode))
+  )
 
 (after! eglot
   (add-to-list 'eglot-server-programs
@@ -63,5 +77,14 @@
                                   "--stdio"))))
 
 (add-hook 'rescript-mode-hook (lambda () (eglot-ensure)))
+
+(setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
+
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode)
+  :config
+  (setq auto-tangle-default t))
+
 
 ;;; config.el ends here
