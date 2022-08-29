@@ -22,5 +22,6 @@
 (package! evil-multiedit)
 (package! org-auto-tangle)
 (package! beacon)
+(package! rescript-mode)
 
 ;;; packages.el ends here

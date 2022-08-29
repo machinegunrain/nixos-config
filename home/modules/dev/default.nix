@@ -4,4 +4,6 @@
     ./elixir
     ./bun
   ];
+
+  home.packages = with pkgs; [nodejs];
 }

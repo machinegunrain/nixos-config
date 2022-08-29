@@ -56,4 +56,12 @@
   :config
   (setq auto-tangle-default t))
 
+(after! eglot
+  (add-to-list 'eglot-server-programs
+               '(rescript-mode . ("node"
+                                  "$HOMECONF/modules/base/emacs/rescript-vscode/extension/server/out/server.js"
+                                  "--stdio"))))
+
+(add-hook 'rescript-mode-hook (lambda () (eglot-ensure)))
+
 ;;; config.el ends here

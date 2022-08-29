@@ -3,4 +3,7 @@
     ./discord
     ./spotify
   ];
+
+  home.packages = with pkgs; [google-chrome];
+
 }
