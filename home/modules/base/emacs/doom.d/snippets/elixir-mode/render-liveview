@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: render liveview
+# key: <rl
+# --
+
+def render(assign) do
+  ~H"""
+  """
+end

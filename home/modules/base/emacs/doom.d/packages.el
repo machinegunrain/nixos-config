@@ -24,5 +24,6 @@
 (package! beacon)
 (package! rescript-mode)
 (package! polymode)
-
+(package! corfu)
+(package! cape)
 ;;; packages.el ends here
