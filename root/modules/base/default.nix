@@ -16,7 +16,7 @@
 
   # root packages
   environment.systemPackages = with pkgs; [
-    wget parted git ntfs3g cachix libglvnd gnumake gcc
+    wget parted git ntfs3g cachix libglvnd gnumake gcc glibc
     libde265 openh264 faad2 xvidcore ffmpeg_5 libmad
     pavucontrol nerdfonts zlib sqlite
     freeglut ghostscript inotify-tools

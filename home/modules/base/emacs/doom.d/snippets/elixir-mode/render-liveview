@@ -3,7 +3,7 @@
 # key: <rl
 # --
 
-def render(assign) do
+def render(assigns) do
   ~H"""
   """
 end

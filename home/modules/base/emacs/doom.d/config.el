@@ -71,12 +71,12 @@
   )
 
 (after! eglot
+  (add-hook 'rescript-mode-hook (lambda () (eglot-ensure)))
   (add-to-list 'eglot-server-programs
                '(rescript-mode . ("node"
                                   "$HOME/nixos-config/home/modules/base/emacs/rescript-vscode/extension/server/out/server.js"
                                   "--stdio"))))
 
-(add-hook 'rescript-mode-hook (lambda () (eglot-ensure)))
 
 (setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
 

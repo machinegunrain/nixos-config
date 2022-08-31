@@ -1,5 +1,2 @@
 {config, lib, pkgs, ... }: {
-
-  home.packages = with pkgs; [erlang  erlang-ls elixir elixir_ls];
-
-}
+  home.packages = with pkgs; [erlang elixir elixir_ls];}
