@@ -3,7 +3,6 @@
     ./python
     ./elixir
     ./bun
+    ./node
   ];
-
-  home.packages = with pkgs; [nodejs dart];
 }
