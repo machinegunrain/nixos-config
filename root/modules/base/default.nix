@@ -80,9 +80,9 @@
   # networking.interfaces.wls6.useDHCP = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 3000 5432 8080 8888 57621];
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 0 20 21 22 80 443 194 1194 3000 5432 8080 8888 57621];
   networking.firewall.allowedUDPPorts = [ 67 68 161 162];
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
