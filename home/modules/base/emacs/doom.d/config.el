@@ -23,14 +23,11 @@
       doom-variable-pitch-font (font-spec :family "Iosevka")
       doom-big-font (font-spec :family "PragmataPro Mono Liga" :size 22))
 
-
 ;; global settings
 (setq
-  beacon-mode t
   tree-sitter-hl-modes t)
 
-;; treemacs
-(after! (:and treemacs ace-window)
+(after! (:ibuffer ace-window)
   (setq aw-ignored-buffers (delq 'treemacs-mode aw-ignored-buffers)))
 
 ;; org mode
@@ -51,7 +48,6 @@
   (setq org-rome-directory "~/Documents/org"))
 
 ;; Assumes web-mode and elixir-mode are already set up
-;;
 (use-package polymode
   :mode ("\.ex$" . poly-elixir-web-mode)
   :config
@@ -67,16 +63,7 @@
     :fallback-mode 'host)
   (define-polymode poly-elixir-web-mode
     :hostmode 'poly-elixir-hostmode
-    :innermodes '(poly-liveview-expr-elixir-innermode))
-  )
-
-(after! eglot
-  (add-hook 'rescript-mode-hook (lambda () (eglot-ensure)))
-  (add-to-list 'eglot-server-programs
-               '(rescript-mode . ("node"
-                                  "$HOME/nixos-config/home/modules/base/emacs/rescript-vscode/extension/server/out/server.js"
-                                  "--stdio"))))
-
+    :innermodes '(poly-liveview-expr-elixir-innermode)))
 
 (setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
 
@@ -89,37 +76,8 @@
 (setq yas-snippet-dirs (append yas-snippet-dirs
                                '("./snippets")))
 
-;; (use-package corfu
-;;   :custom
-;;   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-;;   (corfu-auto t)                 ;; Enable auto completion
-;;   (corfu-preselect-first nil)    ;; Disable candidate preselection
-;;   ;; Use TAB for cycling, default is `corfu-complete'.
-;;   :bind
-;;   (:map corfu-map
-;;         ("TAB" . corfu-next)
-;;         ([tab] . corfu-next)
-;;         ("S-TAB" . corfu-previous)
-;;         ([backtab] . corfu-previous))
+(global-set-key (kbd "M-o") 'ace-window)
 
-;;   :init
-;;   (global-corfu-mode))
-
-;; ;; Add extensions
-;; (use-package cape
-;;   :init
-;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-;;   (add-to-list 'completion-at-point-functions #'cape-file)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-history)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-ispell)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
-;;   ;;(add-to-list 'completion-at-point-functions #'cape-line)
-;; )
+(setq forge-topic-list-limit '(100 . 0))
 
 ;;; config.el ends here
