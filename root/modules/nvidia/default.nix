@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: {
 
   # root packages
-  environment.systemPackages = with pkgs; [
-    cudatoolkit
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   cudatoolkit
+  # ];
 
 
   # hardware
