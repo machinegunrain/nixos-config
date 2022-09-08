@@ -21,9 +21,6 @@
 
 (package! evil-multiedit)
 (package! org-auto-tangle)
-(package! beacon)
-(package! rescript-mode)
 (package! polymode)
-(package! corfu)
-(package! cape)
+(package! ace-window)
 ;;; packages.el ends here
