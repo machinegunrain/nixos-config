@@ -80,4 +80,6 @@
 
 (setq forge-topic-list-limit '(100 . 0))
 
+(setq lsp-html-format-enable nil)
+
 ;;; config.el ends here
