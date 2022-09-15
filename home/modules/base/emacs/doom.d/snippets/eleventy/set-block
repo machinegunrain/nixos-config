@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: set-block
+# key: <sb
+# --
+
+{% set $1 %}
+  $0
+{% endset%}
