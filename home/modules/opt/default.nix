@@ -4,6 +4,6 @@
     ./spotify
   ];
 
-  home.packages = with pkgs; [google-chrome];
+  home.packages = with pkgs; [google-chrome gimp transmission-gtk];
 
 }
