@@ -11,6 +11,10 @@
     shellInit = ''
       set HOMECONF $HOME/nixos-config/home
       set ROOTCONF $HOME/nixos-config/root
+
+      set DOOMDIR $HOMECONF/modules/base/emacs/doom.d
+      set YAS $DOOMDIR/snippets
+
       set FLYCTL_INSTALL "$HOME/.fly"
 
       zoxide init fish | source

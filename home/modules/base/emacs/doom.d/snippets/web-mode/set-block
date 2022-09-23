@@ -1,8 +1,10 @@
 # -*- mode: snippet -*-
 # name: set-block
-# key: <sb
+# key: setb
 # --
 
 {% set $1 %}
-  $0
-{% endset%}
+  $2
+{% endset %}
+
+$0

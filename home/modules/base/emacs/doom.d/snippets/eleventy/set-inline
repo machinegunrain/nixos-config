@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: set-inline
-# key: <si
-# --
-
-{% set $1 = $2 %}$0

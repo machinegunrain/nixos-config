@@ -27,8 +27,8 @@
 (setq
   tree-sitter-hl-modes t
   forge-topic-list-limit '(100 . 0)
-  lsp-html-format-enable nil
-  yas-snippet-dirs (append yas-snippet-dirs '("./snippets")))
+  lsp-html-format-enable nil)
+  ;; yas-snippet-dirs (append yas-snippet-dirs '("./snippets"))
 
 (after! (:ibuffer ace-window)
   (setq aw-ignored-buffers (delq 'treemacs-mode aw-ignored-buffers)))

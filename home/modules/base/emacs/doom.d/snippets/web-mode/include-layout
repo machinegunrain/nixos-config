@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: include-layout
-# key: <il
+# key: incl
 # --
 
 {% include "layouts/$1" %}

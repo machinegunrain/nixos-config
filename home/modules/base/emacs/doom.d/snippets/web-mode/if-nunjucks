@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: if
-# key: <if
+# name: if-nunjucks
+# key: ifn
 # --
 
 {% if $1 %}
