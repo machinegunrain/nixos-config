@@ -3,5 +3,4 @@
 # key: incp
 # --
 
-{% include "partials/$1" %}
-$0
+{% include "partials/$1" %}$0

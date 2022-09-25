@@ -3,5 +3,4 @@
 # key: incl
 # --
 
-{% include "layouts/$1" %}
-$0
+{% include "layouts/$1" %}$0
