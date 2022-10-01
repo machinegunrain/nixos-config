@@ -19,7 +19,7 @@
               EDITOR = "emacsclient -n -c -a emacs";
            };
            keyboard = null;
-           packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age
+           packages = with pkgs; [ nix-prefetch-github htop unzip i2c-tools dunst pass age xsel
                                    fzf neofetch  fd ripgrep procs tldr exa bat tokei zoxide
                                    mpv geeqie lsix ueberzug playerctl sioyek glow xdg-utils];
            };
