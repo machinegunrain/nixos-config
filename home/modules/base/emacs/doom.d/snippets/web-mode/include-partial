@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: include-partial
-# key: incp
-# --
-
-{% include "partials/$1" %}$0
